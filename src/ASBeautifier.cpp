@@ -60,7 +60,7 @@ ASBeautifier::ASBeautifier()
 	setSpaceIndentation(4);
 	setMinConditionalIndentOption(MINCOND_TWO);
 	setMaxInStatementIndentLength(40);
-	classInitializerIndents = 1;
+    setClassInitializerIndents(1);
 	tabLength = 0;
 	setClassIndent(false);
 	setSwitchIndent(false);
@@ -472,6 +472,16 @@ void ASBeautifier::setSpaceIndentation(int length)
 void ASBeautifier::setMaxInStatementIndentLength(int max)
 {
 	maxInStatementIndent = max;
+}
+
+/**
+ * set the indentation inside of a class initializer.
+ *
+ * @param   indents   number of indents.
+ */
+void ASBeautifier::setClassInitializerIndents(int indent)
+{
+    classInitializerIndents = indent;
 }
 
 /**

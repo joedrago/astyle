@@ -1540,6 +1540,10 @@ void ASConsole::printHelp() const
 	(*_err) << "    The valid values are 40 thru 120.\n";
 	(*_err) << "    The default value is 40.\n";
 	(*_err) << endl;
+	(*_err) << "    --class-initalizer-indent=#  OR  -xc#\n";
+	(*_err) << "    Sets the number of indents to use during a class initalizer.\n";
+	(*_err) << "    The default value is 1.\n";
+	(*_err) << endl;
 	(*_err) << "Padding options:\n";
 	(*_err) << "--------------------\n";
 	(*_err) << "    --break-blocks  OR  -f\n";
@@ -2707,6 +2711,17 @@ void ASOptions::parseOption(const string &arg, const string &errorInfo)
 			isOptionError(arg, errorInfo);
 		else
 			formatter.setMaxInStatementIndentLength(maxIndent);
+	}
+	else if ( isParamOption(arg, "xc", "class-initalizer-indent=") )
+	{
+		int indent = 1;
+		string indentParam = getParam(arg, "xc", "class-initalizer-indent=");
+		if (indentParam.length() > 0)
+			indent = atoi(indentParam.c_str());
+		if (indent > 200)
+			isOptionError(arg, errorInfo);
+		else
+			formatter.setClassInitializerIndents(indent);
 	}
 	else if ( isOption(arg, "N", "indent-namespaces") )
 	{

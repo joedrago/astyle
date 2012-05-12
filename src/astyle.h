@@ -323,7 +323,8 @@ class ASBeautifier : protected ASResource, protected ASBase
 		void setForceTabXIndentation(int length);
 		void setSpaceIndentation(int length = 4);
 		void setTabIndentation(int length = 4, bool forceTabs = false);
-		void setMaxInStatementIndentLength(int max);
+        void setMaxInStatementIndentLength(int max);
+		void setClassInitializerIndents(int indent);
 		void setMinConditionalIndentOption(int min);
 		void setMinConditionalIndentLength();
 		void setModeManuallySet(bool state);
